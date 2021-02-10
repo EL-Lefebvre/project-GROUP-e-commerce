@@ -5,11 +5,11 @@ const companies = require("./data/companies");
 
 const getSingleItem = (req, res) => {
     const id = req.params.id;
-    console.log(id, items);
+
     const oneItem = items.find(
         (item) => item._id == id
     );
-    console.log(oneItem);
+   
     if (oneItem) {
         res.status(200).json({ data: oneItem });
     } else {
