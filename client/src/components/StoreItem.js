@@ -130,13 +130,6 @@ const StyledLink = styled(Link)`
 `;
 
 const Container = styled.div`
-    display: flex;
-    justify-content: space-between;   
-
-`;
-
-
-const Container = styled.div`
   display: flex;
   justify-content: space-between;
 `;

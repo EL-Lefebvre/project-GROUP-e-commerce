@@ -8,7 +8,7 @@ const CartItem = () => {
   const dispatch = useDispatch();
   const storeState = useSelector(getStoreItemArray);
   setNewItem(storeState);
-  console.log(newitem);
+console.log(newitem)
   return <Wrapper></Wrapper>;
 };
 const Wrapper = styled.div`

@@ -19,7 +19,6 @@ const Item = () => {
       fetch(`/item/${id}`)
         .then((response) => response.json())
         .then((response) => {
-          console.log("singleItemData", response.data);
           setItemData(response.data);
           setStatus("idle");
         })
@@ -35,7 +34,6 @@ const Item = () => {
       fetch(`/company/${id}`)
         .then((response) => response.json())
         .then((response) => {
-          console.log("companyIdData", response.data);
           setCompany(response.data);
           setStatus("idle");
         })

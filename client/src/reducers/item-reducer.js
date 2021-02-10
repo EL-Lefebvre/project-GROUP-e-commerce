@@ -8,9 +8,7 @@ export default function itemReducer(state = initialState, action) {
         ...state,
         [action.item.id]: {
           ...action.item,
-          quantity: state[action.item.id]
-            ? state[action.item.id].quantity + 1
-            : 1,
+          quantity: 1,
         },
       };
     }
