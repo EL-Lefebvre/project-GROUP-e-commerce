@@ -4,9 +4,7 @@ import LocationPin from "./LocationPin";
 import styled from "styled-components";
 import { COLORS } from "../constants";
 
-
 const Map = ({ location, zoomLevel }) => {
- 
   return (
     <>
       <Wrapper>
@@ -16,8 +14,7 @@ const Map = ({ location, zoomLevel }) => {
           <MapActual>
             <GoogleMapReact
               bootstrapURLKeys={{
-                key: process.env.REACT_APP_GOOGLE_KEY
-                
+                key: process.env.REACT_APP_GOOGLE_KEY,
               }}
               defaultCenter={location}
               defaultZoom={zoomLevel}
@@ -97,4 +94,3 @@ const Bold = styled.div`
   font-weight: bold;
   margin-left: 10px;
 `;
-
