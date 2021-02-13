@@ -1,6 +1,14 @@
 import React from "react";
 const initialState = {};
 
+export const calculateTotal = (updatedCart) => {
+  const totalCartQuantity = Object.values(updatedCart).reduce((total, item) => Number(total + item.quantity), 0);
+  const totalCartCost = Object.values(updatedCart).reduce((totalCost, item) => totalCost + (item.quantity * item.price), 0);
+  return { totalCartQuantity, totalCartCost };
+}
+
+
+
 export default function itemReducer(state = initialState, action) {
   console.log(Object.values(state));
   switch (action.type) {
@@ -25,14 +33,15 @@ export default function itemReducer(state = initialState, action) {
     }
 
     case "UPDATE_QUANTITY": {
-      return {
+      const updatedCart = {
         ...state,
-        [action.itemId]: {
-          ...state[action.itemId],
-          quantity: action.quantity,
-        },
-      };
+        [action.item._id]: {
+            ...action.item,
+            quantity: action.newQuantity,
+        } 
     }
+    return updatedCart;
+}
     default:
       return state;
   }

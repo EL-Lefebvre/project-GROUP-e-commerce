@@ -3,13 +3,28 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { removeItem, updateQuantity } from "../actions";
 import { getStoreItemArray } from "../reducers";
-const CartItem = () => {
+const CartItem = ({ setTotalCost }) => {
   const dispatch = useDispatch();
   const storeState = useSelector(getStoreItemArray);
-console.log(storeState);
+  console.log(storeState);
   const newItems = Object.values(storeState[0]);
 
-  
+//   const handleInput = (value) => {
+//     const newQuantity = parseInt(value);
+//     if (Number.isInteger(newQuantity)) {
+//         dispatch(updateQuantity({id, title, price}, newQuantity));
+//     }
+//     else if (value === '') {
+//         dispatch(updateQuantity({id, title, price}, ''));
+//     }
+// }
+
+// useEffect(()=>{
+//     if (quantity) {
+//         previousQuantity.current = quantity;
+//     }
+// }, [quantity]);
+
   return (
     <Wrapper>
       <List>
@@ -22,7 +37,13 @@ console.log(storeState);
                     <h3>{item.name} </h3>
                   </Title>
                   <Delete>
-                    <DeleteButton onClick={() => { dispatch(removeItem( item._id ))}}>X</DeleteButton>
+                    <DeleteButton
+                      onClick={() => {
+                        dispatch(removeItem(item._id));
+                      }}
+                    >
+                      X
+                    </DeleteButton>
                   </Delete>
                 </Header>
 
@@ -75,6 +96,7 @@ const Items = styled.div`
   display: flex;
   flex-direction: column;
   padding: 5px;
+  padding-bottom: 10px;
   border-bottom: lightgray 1px solid;
 `;
 
@@ -87,16 +109,15 @@ const Header = styled.div`
 const Title = styled.div``;
 const Delete = styled.div``;
 const DeleteButton = styled.button`
-background-color:white;
-border:none;
-border-radius:20px;
-height:25px;
-font-weight:bold;
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  height: 25px;
+  font-weight: bold;
   transition: 0.3s;
-&:hover{
-  background-color:lightgray;
-
-}
+  &:hover {
+    background-color: lightgray;
+  }
 `;
 
 const ItemWrapper = styled.div`
