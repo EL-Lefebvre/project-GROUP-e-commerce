@@ -1,10 +1,10 @@
 "use strict";
+require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-
-const PORT = 4000;
+const PORT = `${process.env.REACT_APP_API_URL}`;
 const handlers = require("./handlers");
 
 express()
@@ -27,7 +27,6 @@ express()
 
   .get("/bacon", (req, res) => res.status(200).json("🥓"))
 
-
   .get("/items", handlers.getItems)
 
   .get("/items/categories/:category", handlers.getItemsCategory)
@@ -42,5 +41,7 @@ express()
   // .get("/search/:searchstring", handlers.getItemBySearch)
 
   .post("/purchase", handlers.addPurchase)
-  
-  .listen(PORT, () => console.info(`Listening on port ${PORT}`));
+
+  .listen(process.env.PORT || 4000, () =>
+    console.info(`Listening on port ${process.env.PORT || 4000}`)
+  );
