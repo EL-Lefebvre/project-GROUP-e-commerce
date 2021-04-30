@@ -119,7 +119,6 @@ const Checkout = () => {
 
   useEffect(() => {
     Object.values(formData).includes("") || formValidation() === false
-
       ? setDisabled(true)
       : setDisabled(false);
   }, [formData, setDisabled]);
