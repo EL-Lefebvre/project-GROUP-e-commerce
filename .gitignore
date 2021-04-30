@@ -7,7 +7,7 @@
 .pnp.js
 
 # api keys
-.env 
+
 
 # testing
 /client/coverage
