@@ -1,0 +1,2 @@
+  command = "yarn install && yarn build"
+  functions = "functions"
