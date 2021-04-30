@@ -25,7 +25,9 @@ express()
   .use(express.urlencoded({ extended: false }))
   .use("/", express.static(__dirname + "/"))
 
-  .get("/bacon", (req, res) => res.status(200).json("🥓"))
+  .get("/bacon", (req, res) => {
+    res.status(200).json({ greeting: "hello" });
+  })
 
   .get("/items", handlers.getItems)
 
