@@ -4,9 +4,9 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const PORT = `${process.env.REACT_APP_API_URL}`;
+const PORT = process.env.PORT || 4000;
 const handlers = require("./handlers");
-
+console.log(PORT);
 express()
   .use(function (req, res, next) {
     res.header(
@@ -42,6 +42,4 @@ express()
 
   .post("/purchase", handlers.addPurchase)
 
-  .listen(process.env.PORT || 4000, () =>
-    console.info(`Listening on port ${process.env.PORT || 4000}`)
-  );
+  .listen(PORT, () => console.info(`Listening on port ${PORT}`));
