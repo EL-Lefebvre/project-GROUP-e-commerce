@@ -8,7 +8,8 @@ const PORT = process.env.PORT || 4000;
 const handlers = require("./handlers");
 console.log(PORT);
 express()
-  .use(cors({ origin: "https://weartek.herokuapp.com" }))
+  .use(allowCrossDomain)
+  .use(cors({ credentials: true, origin: "https://weartek.herokuapp.com" }))
   .use(function (req, res, next) {
     res.header(
       "Access-Control-Allow-Methods",

@@ -14,6 +14,7 @@ import styled from "styled-components";
 import SearchBar from "../components/SearchBar";
 import { useSelector } from "react-redux";
 import { getStoreItemArray } from "../reducers/item-reducer";
+const URL = "https://weartek.herokuapp.com";
 
 const Header = () => {
   const [totalItemsHeader, setTotalItemsHeader] = useState();
@@ -38,7 +39,7 @@ const Header = () => {
   }, [newItems]);
 
   useEffect(() => {
-    fetch("/items")
+    fetch(`${URL}/items`)
       .then((res) => res.json())
       .then((json) => {
         const { status, data, message } = json;
