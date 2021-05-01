@@ -19,7 +19,7 @@ express()
   //   );
   //   next();
   // })
-  .use(cors({ origin: "https://weartek.herokuapp.com" }))
+  .use(cors())
   .use(morgan("tiny"))
   .use(express.static("./server/assets"))
   .use(bodyParser.json())
