@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 import { COLORS } from "../constants";
 import styled from "styled-components";
-
+const URL = "https://weartek.herokuapp.com";
 const Item = () => {  
   const [itemData, setItemData] = useState([]);
   const [company, setCompany] = useState([]);
@@ -17,19 +17,19 @@ const Item = () => {
     setStatus("loading");
     if (id) {
       Promise.all([
-        fetch(`/item/${id}`).then(response => response.json()),
-        fetch(`/company/${id}`).then(response => response.json())    
-      ]).then(([itemsData, compagnyData]) => { 
-        if (itemsData.status === 200 && compagnyData.status === 200){      
-          setItemData(itemsData.data);
-          setCompany(compagnyData.data);
-          setStatus("idle");
-        }
-        else
-          setStatus("error");         
-      }).catch(() => {
-        setStatus("error");
-      });
+        fetch(`${URL}/item/${id}`).then((response) => response.json()),
+        fetch(`${URL}/company/${id}`).then((response) => response.json()),
+      ])
+        .then(([itemsData, compagnyData]) => {
+          if (itemsData.status === 200 && compagnyData.status === 200) {
+            setItemData(itemsData.data);
+            setCompany(compagnyData.data);
+            setStatus("idle");
+          } else setStatus("error");
+        })
+        .catch(() => {
+          setStatus("error");
+        });
     }
   }, [id]);
   

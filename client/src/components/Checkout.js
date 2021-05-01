@@ -24,6 +24,7 @@ const initialState = {
   eD: "",
   nB: "",
 };
+const URL = "https://weartek.herokuapp.com";
 
 const Checkout = () => {
   const [formData, setFormData] = useState(initialState);
@@ -48,7 +49,7 @@ const Checkout = () => {
     ev.preventDefault();
 
     setSubStatus("pending");
-    fetch("/purchase", {
+    fetch(`${URL}/purchase`, {
       method: "POST",
       headers: {
         Accept: "application/json",

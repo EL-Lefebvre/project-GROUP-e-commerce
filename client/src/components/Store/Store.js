@@ -13,7 +13,7 @@ import Spinner from '../Tools/Spinner';
 import ErrorPage from "../ErrorPage";
 import Dropdown from './Dropdown';
 
-
+const URL = "https://weartek.herokuapp.com";
 
 const Store = () => {   
   const {currentStore , status, sort, filters:{price, body_location} } = useSelector((state)=>state.store);  
@@ -27,7 +27,10 @@ const Store = () => {
   }
 
    const createFetchEndPoint = useCallback(() =>{
-    let text = category === 'allProducts' ? '/items?': `/items/categories/${category}?`;
+    let text =
+      category === "allProducts"
+        ? `${URL}/items?`
+        : `${URL}/items/categories/${category}?`;
     if (sort !== 'default')
       text += 'sort_by=' + sort;    
     if (price.value !== 'default'){
