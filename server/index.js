@@ -1,6 +1,6 @@
 "use strict";
 require("dotenv").config();
-
+const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 4000;
 const handlers = require("./handlers");
 console.log(PORT);
 express()
+  .use(cors({ origin: "https://weartek.herokuapp.com/" }))
   .use(function (req, res, next) {
     res.header(
       "Access-Control-Allow-Methods",
